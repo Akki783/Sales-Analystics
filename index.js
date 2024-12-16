@@ -13,6 +13,7 @@ app.get('/',(req,res)=>{
     res.send(`Sever is running`);
 })
 
+/*
 app.get('/regions', async (req, res) => {
     try {
         const regions = await Store.distinct('Region');
@@ -25,6 +26,24 @@ app.get('/regions', async (req, res) => {
         res.status(500).json({ success: false, message: error.message });
     }
 });
+*/
+
+app.get('/regions', async (req, res) => {
+    try {
+        const regions = await Store.distinct('Region');
+
+        // Transform regions into an array of objects with key-value pairs
+        const regionObjects = regions.map(region => ({ region }));
+
+        res.status(200).json({
+            success: true,
+            data: regionObjects,
+        });
+    } catch (error) {
+        res.status(500).json({ success: false, message: error.message });
+    }
+});
+
 
 
 app.get('/store-codes', async (req, res) => {
