@@ -16,8 +16,11 @@ app.get('/',(req,res)=>{
 app.get('/regions', async (req, res) => {
     try {
         const regions = await Store.distinct('Region');
-        const regionObj2 = Object.assign({},regions);
-        res.status(200).json({ success: true, regions: regionObj2 });
+
+        // const regionObj2 = Object.assign({},regions);
+        // res.status(200).json({ success: true, regions: regionObj2 });
+
+        res.status(200).json({ success: true, regions: regions });
     } catch (error) {
         res.status(500).json({ success: false, message: error.message });
     }
