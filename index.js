@@ -15,7 +15,7 @@ app.get('/regions', async (req, res) => {
     try {
         const regions = await Store.distinct('Region');
         const regionObj2 = Object.assign({},regions);
-        res.status(200).json({ success: true, regions: regionsObj });
+        res.status(200).json({ success: true, regions: regionObj2 });
     } catch (error) {
         res.status(500).json({ success: false, message: error.message });
     }
