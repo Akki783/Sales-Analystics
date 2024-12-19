@@ -5,9 +5,9 @@ const storeSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    "Store Code": [{
+    "Store Code": {
         type: String,
-    }],
+    },
     YTD: {
         "Store Age": {
             type: String,
